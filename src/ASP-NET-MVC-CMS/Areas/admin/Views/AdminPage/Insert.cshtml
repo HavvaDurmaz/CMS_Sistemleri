@@ -1,0 +1,26 @@
+﻿
+<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminPage" class="btn btn-primary" style="margin-bottom:15px;">Geri Git</a>
+
+<form action="/admin/AdminPage/Insert" method="post">
+
+    <input name="Title" class="form-control" placeholder="Başlık :" style="margin-top:15px;margin-bottom:15px;" />
+    <textarea name="Content" id="Content" class="form-control" placeholder="İçerik :" style="margin-top:25px;height:350px"></textarea>
+    <select name="IsActive" class="form-control" style="margin-top:15px;">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+    <input type="submit" value="Kaydet" class="btn btn-primary" style="margin-top:15px;" />
+</form>
+<script type="text/javascript">
+    var editor = CKEDITOR.instances['Content'];
+    if (editor) { editor.destroy(true); }
+    CKEDITOR.replace('Content', {
+        enterMode: CKEDITOR.ENTER_BR,
+    });
+</script>
+
+@if (ViewBag.Mesaj != null)
+{
+    <div class="alert alert-info">@ViewBag.Mesaj</div>
+}

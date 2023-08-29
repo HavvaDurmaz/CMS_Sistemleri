@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminUser/Insert" class="btn btn-primary" style="margin-bottom:15px;">Yeni  Ekle</a>
+<table class="table table-bordered" style="margin-bottom:15px;">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Ad Soyad</td>
+            <td>Email</td>
+            <td>Telefon</td>
+            <td>İşlemler</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>
+                    <a href="/admin/AdminUser/Update/@item.Id" class="btn btn-primary">Düzenle</a>
+                    <a href="/admin/AdminUser/Delete/@item.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@if (TempData["Mesaj"] != null)
+{
+    <div class="alert alert-info">@TempData["Mesaj"]</div>
+}

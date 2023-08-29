@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminPage/Insert" class="btn btn-primary" style="margin-bottom:15px;">Yeni  Ekle</a>
+<table class="table table-bordered" style="margin-bottom:15px;">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Başlık</td>
+            <td>Durumu</td>
+            <td>İşlemler</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@Html.Raw(item.IsActive == true ? "Aktif" : "Pasif")</td>
+                <td>
+                    <a href="/admin/AdminPage/Update/@item.Id" class="btn btn-primary">Düzenle</a>
+                    <a href="/admin/AdminPage/Delete/@item.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@if (TempData["Mesaj"] != null)
+{
+    <div class="alert alert-info">@TempData["Mesaj"]</div>
+}

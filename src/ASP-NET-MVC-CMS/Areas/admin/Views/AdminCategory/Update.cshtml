@@ -1,0 +1,14 @@
+﻿<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminCategory" class="btn btn-primary" style="margin-bottom:15px;">Geri Git</a>
+
+<form action="/admin/AdminCategory/Update/@Model.Id" method="post">
+
+    <input name="Name" class="form-control" value="@Model.Name" style="margin-top:15px;" />
+    <input name="Description" class="form-control" value="@Model.Description" style="margin-top:15px;" />
+    <input type="submit" value="Güncelle" class="btn btn-primary" style="margin-top:15px;" />
+</form>
+
+@if (ViewBag.Mesaj != null)
+{
+    <div class="alert alert-info">@ViewBag.Mesaj</div>
+}

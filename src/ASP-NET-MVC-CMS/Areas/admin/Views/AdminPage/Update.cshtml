@@ -1,0 +1,32 @@
+﻿<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminPage" class="btn btn-primary" style="margin-bottom:15px;">Geri Git</a>
+
+<form action="/admin/AdminPage/Update/@Model.Id" method="post">
+
+    <input name="Title" class="form-control" value="@Model.Title" style="margin-top:15px;margin-bottom:15px;" />
+    <textarea name="Content" id="Content" class="form-control" style="margin-top:15px;height:350px">@Model.Content</textarea>
+    <select name="IsActive" class="form-control" style="margin-top:15px;">
+        @if (Model.IsActive)
+        {
+            <option value="True">Aktif</option>
+            <option value="False">Pasif</option>
+        }
+        else
+        {
+            <option value="False">Pasif</option>
+            <option value="True">Aktif</option>
+        }
+    </select>
+    <input type="submit" value="Kaydet" class="btn btn-primary" style="margin-top:15px;" />
+</form>
+<script type="text/javascript">
+    var editor = CKEDITOR.instances['Content'];
+    if (editor) { editor.destroy(true); }
+    CKEDITOR.replace('Content', {
+        enterMode: CKEDITOR.ENTER_BR,
+    });
+</script>
+@if (ViewBag.Mesaj != null)
+{
+    <div class="alert alert-info">@ViewBag.Mesaj</div>
+}

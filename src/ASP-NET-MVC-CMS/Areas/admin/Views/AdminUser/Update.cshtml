@@ -1,0 +1,20 @@
+﻿
+<h2 style="margin-bottom:15px;margin-top:15px;">CMS YÖNETİMİ</h2>
+<a href="/admin/AdminUser" class="btn btn-primary" style="margin-bottom:15px;">Geri Git</a>
+
+
+<form action="/admin/AdminUser/Update/@Model.Id" method="post">
+
+    <input name="Name" class="form-control" value="@Model.Name" style="margin-top:15px;" />
+    <input name="Email" class="form-control" value="@Model.Email" style="margin-top:15px;" />
+    <input name="Password" class="form-control" value="@Model.Password" style="margin-top:15px;" />
+    <input name="City" class="form-control" value="@Model.City" style="margin-top:15px;" />
+    <input name="Phone" class="form-control" value="@Model.Phone" style="margin-top:15px;" />
+
+    <input type="submit" value="Güncelle" class="btn btn-primary" style="margin-top:15px;" />
+</form>
+
+@if (ViewBag.Mesaj != null)
+{
+    <div class="alert alert-info">@ViewBag.Mesaj</div>
+}
